@@ -1,7 +1,7 @@
 FROM openjdk:11
 
-ADD target/foodbox.jar foodbox.jar
+ADD target/javaexpress-springboot-docker.jar javaexpress-springboot-docker.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","foodbox.jar"]
+ENTRYPOINT ["java","-jar","javaexpress-springboot-docker.jar"]
