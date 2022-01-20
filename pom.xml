@@ -66,7 +66,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>javaexpress-springboot-docker</finalName>
+		<finalName>foodbox</finalName>
 	</build>
 
 </project>
