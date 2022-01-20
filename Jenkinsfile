@@ -19,14 +19,14 @@ pipeline {
         stage('Build Docker image'){
             steps {
               
-                sh 'docker build -t  cipherkey/foodbox:${BUILD_NUMBER} .'
+                sh 'docker build -t  cipherkey/docker_jenkins_springboot:${BUILD_NUMBER} .'
             }
         }
 
         stage('Docker Login'){
             
             steps {
-                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+                 withCredentials([string(credentialsId: 'DockerId1', variable: 'Dockerpwd')]) {
                     sh "docker login -u cipherkey -p ${Dockerpwd}"
                 }
             }                
@@ -34,14 +34,14 @@ pipeline {
 
         stage('Docker Push'){
             steps {
-                sh 'docker push cipherkey/foodbox:${BUILD_NUMBER}'
+                sh 'docker push cipherkey/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         
         stage('Docker deploy'){
             steps {
                
-                sh 'docker run -itd -p  8081:8080 cipherkey/foodbox:${BUILD_NUMBER}'
+                sh 'docker run -itd -p  8081:8080 cipherkey/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
 
